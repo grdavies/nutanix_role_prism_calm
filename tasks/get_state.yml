@@ -1,0 +1,17 @@
+---
+- name: Get current Calm Enablement Status
+  uri:
+    url: "https://{{ nutanix_host }}:{{ nutanix_port }}/api/nutanix/v3/services/nucalm/status"
+    method: GET
+    validate_certs: "{{ validate_certs }}"
+    body_format: json
+    status_code: 200
+    headers:
+      Authorization: "{{ nutanix_api_auth }}"
+  register: nutanix_calm_current_state
+
+- name: Debug nutanix_calm_current_state
+  debug:
+    var: nutanix_calm_current_state
+  when:
+    - nutanix_debug
