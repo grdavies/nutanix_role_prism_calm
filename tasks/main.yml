@@ -14,17 +14,17 @@
 # - name: Check Calm Pre-Reqs
 #   include_tasks: check_prereqs.yml
 #   when:
-#     - nutanix_calm_current_state.json.service_enablement_status != "ENABLED"
+#     - nutanix_calm_state.json.service_enablement_status != "ENABLED"
 #     - nutanix_calm_enable | default(False)
 
 - name: Enable Calm
   include_tasks: enable_feature.yml
   when:
-    - nutanix_calm_current_state.json.service_enablement_status != "ENABLED"
+    - nutanix_calm_state.json.service_enablement_status != "ENABLED"
     - nutanix_calm_enable | default(False)
 
 - name: Disable Calm
   include_tasks: disable_feature.yml
   when:
-    - nutanix_calm_current_state.json.service_enablement_status == "ENABLED"
+    - nutanix_calm_state.json.service_enablement_status == "ENABLED"
     - nutanix_calm_enable | default(True)
