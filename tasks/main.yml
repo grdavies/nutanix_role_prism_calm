@@ -11,11 +11,11 @@
 - name: Get Calm state
   include_tasks: get_state.yml
 
-- name: Check Calm Pre-Reqs
-  include_tasks: check_prereqs.yml
-  when:
-    - nutanix_calm_current_state.service_enablement_status != "ENABLED"
-    - nutanix_calm_enable | default(False)
+# - name: Check Calm Pre-Reqs
+#   include_tasks: check_prereqs.yml
+#   when:
+#     - nutanix_calm_current_state.service_enablement_status != "ENABLED"
+#     - nutanix_calm_enable | default(False)
 
 - name: Enable Calm
   include_tasks: enable_feature.yml
