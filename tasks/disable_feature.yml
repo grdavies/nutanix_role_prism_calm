@@ -5,7 +5,6 @@
     method: POST
     body:
       state: DISABLE
-      enable_nutanix_apps: "{{ nutanix_calm_enable_default_apps }}"
     validate_certs: "{{ validate_certs }}"
     body_format: json
     status_code: 202
