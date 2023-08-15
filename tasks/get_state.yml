@@ -8,10 +8,14 @@
     status_code: 200
     headers:
       Authorization: "{{ nutanix_api_auth }}"
-  register: nutanix_calm_current_state
+  register: nutanix_calm_state
 
-- name: Debug nutanix_calm_current_state
+- name: Debug nutanix_calm_state
   debug:
-    var: nutanix_calm_current_state
+    var: nutanix_calm_state
   when:
     - nutanix_debug
+
+- name: Current status of Calm service(s)
+  debug:
+    msg: "Calm is currently in a '{{ nutanix_calm_state.json.service_enablement_status }}' state."
